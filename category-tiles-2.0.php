@@ -40,8 +40,8 @@ class cat2_widget extends WP_Widget {
 //Query the latest post in a category --> "display one post whose category slug is _____"
     $my_query = new WP_Query( array(
                                 'category_name'=>$cat2_category,
-                                'posts_per_page'=>1,
-                                'offset'=>$instance['count']-1));
+                                'posts_per_page'=>1));
+    add_action('pre_get_posts', 'exclude_displayed_posts');
         while ( $my_query->have_posts() ) : $my_query->the_post();
         //Store the latest post's ID in $latest_post, then assign variables to post info
             $latest_postID = $post->ID;
