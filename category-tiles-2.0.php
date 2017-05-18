@@ -27,7 +27,11 @@ class cat2_widget extends WP_Widget {
             'description' => 'This is the Category Tiles Widget' );
     parent::__construct( 'cat2_widget', 'Category Tiles 2.0', $widget_options );
     }
-    
+    public function exclude_displayed_posts($query){
+        if ($query->is_home() && $query->is_main_query()){
+            $query->set('offset', $instance[count]);
+        }
+    }
 // Create the widget output.
     public function widget( $args, $instance ) {
 //Assigns $title to the 'title' input from the $instance array in public function form($instance)
