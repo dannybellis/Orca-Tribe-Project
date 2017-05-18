@@ -27,11 +27,13 @@ class cat2_widget extends WP_Widget {
             'description' => 'This is the Category Tiles Widget' );
     parent::__construct( 'cat2_widget', 'Category Tiles 2.0', $widget_options );
     }
-    public function exclude_displayed_posts(&$query){
-        if ($query->is_home() && $query->is_main_query()){
-            $query->set('offset', $instance[count]);
+    
+    public function exclude_displayed_posts($query,$instance){
+        if ($query->is_main_query()){
+            $query->set('offset', $instance['count']-1);
         }
     }
+    
 // Create the widget output.
     public function widget( $args, $instance ) {
 //Assigns $title to the 'title' input from the $instance array in public function form($instance)
@@ -40,7 +42,10 @@ class cat2_widget extends WP_Widget {
 //Query the latest post in a category --> "display one post whose category slug is _____"
     $my_query = new WP_Query( array(
                                 'category_name'=>$cat2_category,
-                                'posts_per_page'=>1));
+                                'posts_per_page'=>1,
+                                'offset'=>$instance['count']-1
+                                ));
+    $offset = $my_query->offset;
     add_action('pre_get_posts', 'exclude_displayed_posts');
         while ( $my_query->have_posts() ) : $my_query->the_post();
         //Store the latest post's ID in $latest_post, then assign variables to post info
@@ -91,7 +96,8 @@ class cat2_widget extends WP_Widget {
             headline.style.visibility = "hidden";
             date.style.visibility = "hidden";
             image.style.filter = "grayscale(100%)";
-            console.log(<?php echo $tag_ID;?>);
+            console.log("post ID is: "+<?php echo $tag_ID;?>);
+            console.log("post offset is: "+<?php echo $offset;?>);
         }
         
         function selectStory<?php echo $tag_ID?>(){
@@ -101,7 +107,8 @@ class cat2_widget extends WP_Widget {
             headline.style.visibility = "visible";
             date.style.visibility = "visible";
             image.style.filter = "grayscale(0%)";
-            console.log(<?php echo $tag_ID;?>);
+            console.log("post ID is: "+<?php echo $tag_ID;?>);
+            console.log("post offset is: "+<?php echo $offset;?>);
         }
         
     </script>
@@ -110,15 +117,17 @@ class cat2_widget extends WP_Widget {
     //Display the widget spacing, title
     echo $args['before_widget'] ; ?>
         
+        
+    <a href="<?php echo $cat2_URL;?>">
         <div class="tile<?php echo $tag_ID;?>" id="tilediv<?php echo $tag_ID;?>" onmouseout="unselectStory<?php echo $tag_ID?>()" onmouseover="selectStory<?php echo $tag_ID?>()">
-            <a href="<?php echo $cat2_URL;?>">
             <?php echo $featured_image;?>
             <div class="tilebottomleft<?php echo $tag_ID;?>">
                 <h1 class="tile<?php echo $tag_ID;?>" id="tileheadline<?php echo $tag_ID;?>"><?php echo $headline;?></h1>
                 <p class="tile<?php echo $tag_ID;?>" id="tiledate<?php echo $tag_ID;?>"><?php echo $cat2_date; ?> </p>
             </div>
-            </a>
         </div>
+    </a>
+        
         
     <?php
     echo $args['after_widget'];
