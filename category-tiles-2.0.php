@@ -28,12 +28,6 @@ class cat2_widget extends WP_Widget {
     parent::__construct( 'cat2_widget', 'Category Tiles 2.0', $widget_options );
     }
     
-    public function exclude_displayed_posts($query,$instance){
-        if ($query->is_main_query()){
-            $query->set('offset', $instance['count']-1);
-        }
-    }
-    
 // Create the widget output.
     public function widget( $args, $instance ) {
 //Assigns $title to the 'title' input from the $instance array in public function form($instance)
@@ -45,8 +39,6 @@ class cat2_widget extends WP_Widget {
                                 'posts_per_page'=>1,
                                 'offset'=>$instance['count']-1
                                 ));
-    $offset = $my_query->offset;
-    add_action('pre_get_posts', 'exclude_displayed_posts');
         while ( $my_query->have_posts() ) : $my_query->the_post();
         //Store the latest post's ID in $latest_post, then assign variables to post info
             $latest_postID = $post->ID;
