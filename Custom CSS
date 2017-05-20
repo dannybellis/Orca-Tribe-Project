@@ -1,4 +1,4 @@
-/*----CENTER LOGO/HEADER IMAGE----*/
+/*---CENTER LOGO/HEADER IMAGE---*/
 #logo img {
 	display: block;
     margin: auto;
@@ -7,7 +7,7 @@
     padding: 10px;
 }
 
-/*-----------MENU STYLE-----------*/
+/*----------MENU STYLE----------*/
 .menu {
 	background-color: #fff;
 	background-image: none;
@@ -38,7 +38,7 @@
 	margin: -16px 0 0 0;
 }
 
-.widget-wrapper a {
+.cat2_widget a {
 	color: #fff;
 }
 
