@@ -4,72 +4,83 @@
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-$responsive_options = responsive_get_options();
-//test for first install no database
-$db = get_option( 'responsive_theme_options' );
-//test if all options are empty so we can display default text if they are
-$empty     = ( empty( $responsive_options['home_headline'] ) && empty( $responsive_options['home_subheadline'] ) && empty( $responsive_options['home_content_area'] ) ) ? false : true;
-$emtpy_cta = ( empty( $responsive_options['cta_text'] ) ) ? false : true;
-
+$ftstory_query = new WP_Query( array(
+                                'category_name'=>'featured-story',
+                                'posts_per_page'=>1,
+                                ));
+        while ( $ftstory_query->have_posts() ) : $ftstory_query->the_post();
+        //Store the latest post's ID in $latest_post, then assign variables to post info
+            $fts_postID = $post->ID;
+            $fts_ID = get_the_id();
+            $fts_headline = get_the_title($fts_postID);
+            $fts_date = get_the_date($fts_postID);
+            $fts_featured_image = get_the_post_thumbnail($fts_postID);
+            $fts_URL = get_the_permalink($fts_postID);
+        endwhile;
+$ftartist_query = new WP_Query( array(
+                                'category_name'=>'featured-artist',
+                                'posts_per_page'=>1,
+                                ));
+        while ( $ftartist_query->have_posts() ) : $ftartist_query->the_post();
+        //Store the latest post's ID in $latest_post, then assign variables to post info
+            $fta_postID = $post->ID;
+            $fta_ID = get_the_id();
+            $fta_headline = get_the_title($fta_postID);
+            $fta_date = get_the_date($fta_postID);
+            $fta_featured_image = get_the_post_thumbnail($fta_postID);
+            $fta_URL = get_the_permalink($fta_postID);
+        endwhile;
 ?>
+<style>
+    
+    .featured-story {
+	   border: solid green; 
+	   width: 539px;
+	   height: 385px;
+	   margin-right: 24px;
+	   float: left;
+    }   
 
-<div id="featured" class="grid col-940">
-
-	<div id="featured-content" class="grid col-460">
-
-		<h1 class="featured-title">
-			<?php
-			if ( isset( $responsive_options['home_headline'] ) && $db && $empty )
-				echo $responsive_options['home_headline'];
-			else {
-				_e( 'HAPPINESS', 'responsive' );
-			}
-			?>
-		</h1>
-
-		<h2 class="featured-subtitle">
-			<?php
-			if ( isset( $responsive_options['home_subheadline'] ) && $db && $empty )
-				echo $responsive_options['home_subheadline'];
-			else
-				_e( 'IS A WARM CUP', 'responsive' );
-			?>
-		</h2>
-
-		<?php
-		if ( isset( $responsive_options['home_content_area'] ) && $db && $empty ) {
-			echo do_shortcode( wpautop( $responsive_options['home_content_area'] ) );
-		} else {
-			echo '<p>' . __( 'Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like.', 'responsive' ) . '</p>';
-		} ?>
-
-
-		<?php if ( $responsive_options['cta_button'] == 0 ): ?>
-
-			<div class="call-to-action">
-
-				<a href="<?php echo $responsive_options['cta_url']; ?>" class="blue button">
-					<?php
-					if ( isset( $responsive_options['cta_text'] ) && $db && $emtpy_cta )
-						echo $responsive_options['cta_text'];
-					else
-						_e( 'Call to Action', 'responsive' );
-					?>
-				</a>
-
-			</div><!-- end of .call-to-action -->
-
-		<?php endif; ?>
-
-	</div><!-- end of .col-460 -->
-
-	<div id="featured-image" class="grid col-460 fit">
-
-		<?php $featured_content = ( !empty( $responsive_options['featured_content'] ) ) ? $responsive_options['featured_content'] : '<img class="aligncenter" src="' . get_template_directory_uri() . '/core/images/featured-image.png" width="440" height="300" alt="responsivepro featured image" />'; ?>
-
-		<?php echo do_shortcode( wpautop( $featured_content ) ); ?>
-
-	</div><!-- end of #featured-image -->
-
-</div><!-- end of #featured -->
+    .featured-artist {
+	   border: solid red; 
+	   width: 385px;
+	   height: 385px; 
+	   float: left;
+    }   
+    .featured {
+        position: relative;
+    }
+    .featuredbottomleft {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+    }
+    
+    .featured img {
+        clip: rect(0px 385px 385px 0px);
+    }
+</style>
+<!--Featured Story-->
+<a href="<?php echo $fts_URL;?>">
+    <div class="featured-story">
+        <div class="featured">
+        <?php echo $fts_featured_image;?>
+            <div class="featuredbottomleft">
+                <h1><?php echo $fts_headline;?></h1>
+                <p><?php echo $fts_date; ?> </p>
+            </div>
+        </div>
+    </div>
+</a>
+<!--Featured Artist-->
+<a href="<?php echo $fta_URL;?>">
+    <div class="featured-artist">
+        <div class="featured">
+        <?php echo $fta_featured_image;?>
+            <div class="featuredbottomleft">
+                <h1><?php echo $fta_headline;?></h1>
+                <p><?php echo $fta_date; ?> </p>
+            </div>
+        </div>
+    </div>
+</a>
