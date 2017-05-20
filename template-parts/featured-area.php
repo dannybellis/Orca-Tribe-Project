@@ -71,7 +71,6 @@ $ftartist_query = new WP_Query( array(
     }
 </style>
 <!--Featured Story-->
-<?php echo $before_widget?>
 <a href="<?php echo $fts_URL;?>">
     <div class="featured-story">
         <div class="featured">
