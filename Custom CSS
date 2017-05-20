@@ -30,9 +30,14 @@
 }
 
 /*---------WIDGET STYLE---------*/
+
 .widget-wrapper {
 	background-color: #fff;
 	border: 0px;
 	padding: 0px;
 	margin: -16px 0 0 0;
+}
+
+.widget-wrapper a {
+	color: #fff;
 }
