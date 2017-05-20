@@ -41,3 +41,18 @@
 .widget-wrapper a {
 	color: #fff;
 }
+
+#widgets {
+	margin-top: 0px;
+}
+
+/*--------FEATURED AREA--------*/
+.featured h1{
+	color: #fff;
+	text-transform: uppercase;
+}
+#current-work {
+	margin-top: 1.5em;
+	text-transform: uppercase;
+	color: black;
+}
