@@ -29,6 +29,11 @@
 	text-transform: uppercase;
 }
 
+.menu .current_page_item a, .menu .current-menu-item a {
+	background-color: #fff;
+	color: gray;
+}
+
 /*---------WIDGET STYLE---------*/
 
 .widget-wrapper {
