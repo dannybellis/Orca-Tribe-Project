@@ -36,6 +36,10 @@
 
 /*---------WIDGET STYLE---------*/
 
+.top-left-widget {
+	width: inherit;
+}
+
 .widget-wrapper {
 	background-color: #fff;
 	border: 0px;
