@@ -35,9 +35,12 @@
 }
 
 /*---------WIDGET STYLE---------*/
-
 .top-left-widget {
 	width: inherit;
+}
+
+.widget-title-home h3 {
+	padding: 0px;
 }
 
 .widget-wrapper {
