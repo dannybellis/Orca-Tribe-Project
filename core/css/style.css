@@ -1011,6 +1011,36 @@ form div {
 	width: 100%;
 }
 
+#top-left-widget {
+}
+
+.top-left-widget {
+	background: none;
+	border: none;
+	clear: left;
+	float: left;
+	min-height: 0;
+	padding: 0 3px 0 0;
+	text-align: right;
+	width: 45%;
+}
+
+.top-left-widget ul {
+	padding: 0;
+}
+
+.top-left-widget select,
+.top-left-widget input[type="text"],
+.top-left-widget input[type="password"],
+.top-left-widget input[type="email"] {
+	width: auto;
+}
+
+.top-left-widget #searchform {
+	margin: 0;
+}
+
+
 #top-widget {
 }
 
