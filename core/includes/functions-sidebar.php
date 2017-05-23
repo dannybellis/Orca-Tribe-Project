@@ -142,6 +142,15 @@ function responsive_widgets_init() {
 						  'before_widget' => '<div id="%1$s" class="grid col-300 %2$s"><div class="widget-wrapper">',
 						  'after_widget'  => '</div></div>'
 					  ) );
+    register_sidebar( array(
+						  'name'          => __( 'Top Left Widget', 'responsive' ),
+						  'description'   => __( 'Area 13 - sidebar-top-left.php - Displays on the left of the header', 'responsive' ),
+						  'id'            => 'top-left-widget',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
+						  'before_widget' => '<div id="%1$s" class="%2$s">',
+						  'after_widget'  => '</div>'
+					  ) );
 }
 add_action( 'widgets_init', 'responsive_widgets_init' );
 
