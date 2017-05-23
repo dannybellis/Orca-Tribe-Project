@@ -66,6 +66,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 		<?php responsive_in_header(); // header hook ?>
         
+        <?php get_sidebar('top-left');?>
         <?php get_sidebar( 'top' ); ?>
 
 		<?php if ( get_header_image() != '' ) : ?>
