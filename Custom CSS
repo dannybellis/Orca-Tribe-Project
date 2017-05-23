@@ -29,11 +29,6 @@
 	text-transform: uppercase;
 }
 
-.menu .current_page_item a, .menu .current-menu-item a {
-	background-color: #fff;
-	color: gray;
-}
-
 /*---------WIDGET STYLE---------*/
 
 .widget-wrapper {
@@ -52,10 +47,16 @@
 }
 
 /*--------FEATURED AREA--------*/
-.featured h1{
+#featured-story h1{
 	color: #fff;
 	text-transform: uppercase;
 }
+
+#featured-artist h1{
+	color: #fff;
+	text-transform: uppercase;
+}
+
 #current-work {
 	margin-top: 1.5em;
 	text-transform: uppercase;
