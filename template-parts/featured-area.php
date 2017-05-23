@@ -34,21 +34,25 @@ $ftartist_query = new WP_Query( array(
 <style>
     
     .featured-story {
-	   border: solid green; 
 	   width: 539px;
 	   height: 385px;
 	   margin-right: 24px;
 	   float: left;
+       overflow: hidden;
     }   
 
     .featured-artist {
-	   border: solid red; 
 	   width: 385px;
 	   height: 385px; 
 	   float: left;
+       overflow: hidden;
     }   
     .featured {
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
     }
     .featuredbottomleft {
         position: absolute;
@@ -61,16 +65,17 @@ $ftartist_query = new WP_Query( array(
         top: 8px;
         right: 16px;
         text-align: right;
-    }
-    
-    .featured img {
-        display:block;
-        max-height: 385px;
-        width: auto;
-        height: 385px;
-    }
+    }    
 </style>
+
+<script>
+
+//if img W>H, set style to height: 100%; width: auto.
+//if H>W, set style to width: 100%; height: auto
+
+</script>
 <!--Featured Story-->
+
 <a href="<?php echo $fts_URL;?>">
     <div class="featured-story">
         <div class="featured">
