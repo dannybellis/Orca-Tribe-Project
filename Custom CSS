@@ -55,6 +55,10 @@
 	margin-top: 0px;
 }
 
+.widget_wpcom_social_media_icons_widget a {
+	color: black;
+}
+
 /*--------FEATURED AREA--------*/
 #featured-story h1{
 	color: #fff;
