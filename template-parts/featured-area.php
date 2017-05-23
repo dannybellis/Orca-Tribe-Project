@@ -72,8 +72,8 @@ $ftartist_query = new WP_Query( array(
 
 <a href="<?php echo $fts_URL;?>">
     <div id="featured-story" onmouseover="selectFeaturedStory();" onmouseout="unselectFeaturedStory();">
-        <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
         <div class="featured">
+            <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
             <div class="featuredbottomleft">
                 <h1><?php echo $fts_headline;?></h1>
             </div>
@@ -110,16 +110,16 @@ $ftartist_query = new WP_Query( array(
         console.log(imgStory);
         console.log(imgArtist);
         if (widthStory > heightStory) {
-            imgStory.style.height = "100%";
+            imgStory.style.height = "385px";
             imgStory.style.width = "auto";
         }   else {
-            imgStory.style.width = "100%";
+            imgStory.style.width = "539px";
             imgStory.style.height = "auto";
         }
         if (widthArtist > heightArtist) {
-            imgArtist.style.height = "100%";
+            imgArtist.style.height = "385px";
         }   else {
-            imgArtist.style.width = "100%";
+            imgArtist.style.width = "385px";
         }
 
     }
