@@ -154,7 +154,11 @@ ul {
 	float: left;
 	text-align: left;
 }
-
+.top-left-widget {
+	clear: left;
+	float: left;
+	text-align: left;
+}
 /* =Titles
 -------------------------------------------------------------- */
 .widget-title h3,
@@ -431,7 +435,12 @@ ul {
 	#featured-image .fluid-width-video-wrapper {
 		margin: 20px 0 0 0;
 	}
-
+	.top-left-widget {
+		float: none;
+		text-align: center;
+		clear: right;
+	}
+    
 	.top-widget {
 		float: none;
 		text-align: center;
