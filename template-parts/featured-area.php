@@ -71,7 +71,7 @@ $ftartist_query = new WP_Query( array(
 <!--Featured Story-->
 
 <a href="<?php echo $fts_URL;?>">
-    <div id="featured-story">
+    <div id="featured-story" onmouseover="selectFeaturedStory();" onmouseout="unselectFeaturedStory();">
         <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
         <div class="featured">
             <div class="featuredbottomleft">
@@ -82,7 +82,7 @@ $ftartist_query = new WP_Query( array(
 </a>
 <!--Featured Artist-->
 <a href="<?php echo $fta_URL;?>">
-    <div id="featured-artist" onmouseover="featureSelect()">
+    <div id="featured-artist" onmouseover="selectFeaturedArtist();" onmouseout="unselectFeaturedArtist();">
         <div class="featured">
         <img id="featured-artist-image" src="<?php echo $fta_image_url; ?>"/>
             <div class="featuredtopright">
@@ -100,28 +100,41 @@ $ftartist_query = new WP_Query( array(
     var widthArtist = imgArtist.width;
     var heightArtist = imgArtist.height;
     
-fitImage();
+    fitImage();
 
-//if img W>H, set style to height: 100%; width: auto.
-//if H>W, set style to width: 100%; height: auto
+    //if img W>H, set style to height: 100%; width: auto.
+    //if H>W, set style to width: 100%; height: auto
 
-function fitImage(){
-    console.log("fitImage is running!");
-    console.log(imgStory);
-    console.log(imgArtist);
-    if (widthStory > heightStory) {
-        imgStory.style.height = "100%";
-        imgStory.style.width = "auto";
-    }   else {
-        imgStory.style.width = "100%";
-        imgStory.style.height = "auto";
+    function fitImage(){
+        console.log("fitImage is running!");
+        console.log(imgStory);
+        console.log(imgArtist);
+        if (widthStory > heightStory) {
+            imgStory.style.height = "100%";
+            imgStory.style.width = "auto";
+        }   else {
+            imgStory.style.width = "100%";
+            imgStory.style.height = "auto";
+        }
+        if (widthArtist > heightArtist) {
+            imgArtist.style.height = "100%";
+        }   else {
+            imgArtist.style.width = "100%";
+        }
+
     }
-    if (widthArtist > heightArtist) {
-        imgArtist.style.height = "100%";
-    }   else {
-        imgArtist.style.width = "100%";
+    function unselectFeaturedStory(){
+        imgStory.style.filter="opacity(100%)";
     }
-
-}
-
+        
+    function selectFeaturedStory(){
+        imgStory.style.filter="opacity(70%)";
+    }
+    function unselectFeaturedArtist(){
+        imgArtist.style.filter="opacity(100%)";
+    }
+        
+    function selectFeaturedArtist(){
+        imgArtist.style.filter="opacity(70%)";
+    }
 </script>
