@@ -39,6 +39,10 @@ $ftartist_query = new WP_Query( array(
 	   margin-right: 24px;
 	   float: left;
        overflow: hidden;
+       position: relative;
+       display: flex;
+       justify-content: center;
+       align-items: center;
     }   
 
     #featured-artist {
@@ -46,14 +50,11 @@ $ftartist_query = new WP_Query( array(
 	   height: 385px; 
 	   float: left;
        overflow: hidden;
+       position: relative;
+       display: flex;
+       justify-content: center;
+       align-items: center;
     }   
-    .featured {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
     .featuredbottomleft {
         position: absolute;
         bottom: 8px;
@@ -65,30 +66,30 @@ $ftartist_query = new WP_Query( array(
         top: 8px;
         right: 16px;
         text-align: right;
-    }    
+    }
+    
+    #featured-artist-image {
+        max-width: none;
+    }
 </style>
 
 <!--Featured Story-->
 
 <a href="<?php echo $fts_URL;?>">
     <div id="featured-story" onmouseover="selectFeaturedStory();" onmouseout="unselectFeaturedStory();">
-        <div class="featured">
-            <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
+        <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
             <div class="featuredbottomleft">
                 <h1><?php echo $fts_headline;?></h1>
             </div>
-        </div>
     </div>
 </a>
 <!--Featured Artist-->
 <a href="<?php echo $fta_URL;?>">
     <div id="featured-artist" onmouseover="selectFeaturedArtist();" onmouseout="unselectFeaturedArtist();">
-        <div class="featured">
         <img id="featured-artist-image" src="<?php echo $fta_image_url; ?>"/>
             <div class="featuredtopright">
                 <h1><?php echo $fta_headline;?></h1>
             </div>
-        </div>
     </div>
 </a>
 
@@ -118,8 +119,10 @@ $ftartist_query = new WP_Query( array(
         }
         if (widthArtist > heightArtist) {
             imgArtist.style.height = "385px";
+            imgArtist.style.width = "auto";
         }   else {
             imgArtist.style.width = "385px";
+            imgArtist.style.height = "auto";
         }
 
     }
