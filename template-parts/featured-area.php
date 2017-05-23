@@ -13,7 +13,7 @@ $ftstory_query = new WP_Query( array(
             $fts_postID = $post->ID;
             $fts_ID = get_the_id();
             $fts_headline = get_the_title($fts_postID);
-
+            $fts_image_url = get_the_post_thumbnail_url($fts_postID);
             $fts_featured_image = get_the_post_thumbnail($fts_postID);
             $fts_URL = get_the_permalink($fts_postID);
         endwhile;
@@ -26,14 +26,14 @@ $ftartist_query = new WP_Query( array(
             $fta_postID = $post->ID;
             $fta_ID = get_the_id();
             $fta_headline = get_the_title($fta_postID);
-
+            $fta_image_url = get_the_post_thumbnail_url($fta_postID);
             $fta_featured_image = get_the_post_thumbnail($fta_postID);
             $fta_URL = get_the_permalink($fta_postID);
         endwhile;
 ?>
 <style>
     
-    .featured-story {
+    #featured-story {
 	   width: 539px;
 	   height: 385px;
 	   margin-right: 24px;
@@ -41,7 +41,7 @@ $ftartist_query = new WP_Query( array(
        overflow: hidden;
     }   
 
-    .featured-artist {
+    #featured-artist {
 	   width: 385px;
 	   height: 385px; 
 	   float: left;
@@ -68,18 +68,12 @@ $ftartist_query = new WP_Query( array(
     }    
 </style>
 
-<script>
-
-//if img W>H, set style to height: 100%; width: auto.
-//if H>W, set style to width: 100%; height: auto
-
-</script>
 <!--Featured Story-->
 
 <a href="<?php echo $fts_URL;?>">
-    <div class="featured-story">
+    <div id="featured-story">
         <div class="featured">
-        <?php echo $fts_featured_image;?>
+        <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
             <div class="featuredbottomleft">
                 <h1><?php echo $fts_headline;?></h1>
             </div>
@@ -88,12 +82,46 @@ $ftartist_query = new WP_Query( array(
 </a>
 <!--Featured Artist-->
 <a href="<?php echo $fta_URL;?>">
-    <div class="featured-artist">
+    <div id="featured-artist">
         <div class="featured">
-        <?php echo $fta_featured_image;?>
+        <img id="featured-artist-image" src="<?php echo $fta_image_url; ?>"/>
             <div class="featuredtopright">
                 <h1><?php echo $fta_headline;?></h1>
             </div>
         </div>
     </div>
 </a>
+
+<script>
+
+fitImage();
+
+//if img W>H, set style to height: 100%; width: auto.
+//if H>W, set style to width: 100%; height: auto
+
+function fitImage(){
+    console.log("fitImage is running!");
+    var imgStory = document.getElementById("featured-story-image");
+    var imgArtist = document.getElementById("featured-artist-image");
+    var widthStory = imgStory.width;
+    var heightStory = imgStory.height;
+    var widthArtist = imgArtist.width;
+    var heightArtist = imgArtist.height;
+    console.log(imgStory);
+    console.log(imgArtist);
+    if (widthStory > heightStory) {
+        imgStory.style.height = "385px";
+        imgStory.style.width = "auto";
+    }   else {
+        imgStory.style.width = "539px";
+        imgStory.style.height = "auto";
+    }
+    if (widthArtist > heightArtist) {
+        imgArtist.style.height = "385px";
+    }   else {
+        imgArtist.style.width = "385px";
+    }
+
+}
+
+</script>
