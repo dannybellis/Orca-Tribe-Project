@@ -65,6 +65,8 @@ if ( !defined( 'ABSPATH' ) ) {
 		} ?>
 
 		<?php responsive_in_header(); // header hook ?>
+        
+        <?php get_sidebar( 'top' ); ?>
 
 		<?php if ( get_header_image() != '' ) : ?>
 
@@ -83,7 +85,6 @@ if ( !defined( 'ABSPATH' ) ) {
 
 		<?php endif; // header image was removed (again) ?>
 
-		<?php get_sidebar( 'top' ); ?>
 		<?php wp_nav_menu( array(
 			'container'       => 'div',
 			'container_class' => 'main-nav',
