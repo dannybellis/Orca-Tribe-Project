@@ -72,8 +72,8 @@ $ftartist_query = new WP_Query( array(
 
 <a href="<?php echo $fts_URL;?>">
     <div id="featured-story">
-        <div class="featured">
         <img id="featured-story-image" src="<?php echo $fts_image_url; ?>"/>
+        <div class="featured">
             <div class="featuredbottomleft">
                 <h1><?php echo $fts_headline;?></h1>
             </div>
@@ -82,7 +82,7 @@ $ftartist_query = new WP_Query( array(
 </a>
 <!--Featured Artist-->
 <a href="<?php echo $fta_URL;?>">
-    <div id="featured-artist">
+    <div id="featured-artist" onmouseover="featureSelect()">
         <div class="featured">
         <img id="featured-artist-image" src="<?php echo $fta_image_url; ?>"/>
             <div class="featuredtopright">
@@ -93,7 +93,13 @@ $ftartist_query = new WP_Query( array(
 </a>
 
 <script>
-
+    var imgStory = document.getElementById("featured-story-image");
+    var imgArtist = document.getElementById("featured-artist-image");
+    var widthStory = imgStory.width;
+    var heightStory = imgStory.height;
+    var widthArtist = imgArtist.width;
+    var heightArtist = imgArtist.height;
+    
 fitImage();
 
 //if img W>H, set style to height: 100%; width: auto.
@@ -101,25 +107,19 @@ fitImage();
 
 function fitImage(){
     console.log("fitImage is running!");
-    var imgStory = document.getElementById("featured-story-image");
-    var imgArtist = document.getElementById("featured-artist-image");
-    var widthStory = imgStory.width;
-    var heightStory = imgStory.height;
-    var widthArtist = imgArtist.width;
-    var heightArtist = imgArtist.height;
     console.log(imgStory);
     console.log(imgArtist);
     if (widthStory > heightStory) {
-        imgStory.style.height = "385px";
+        imgStory.style.height = "100%";
         imgStory.style.width = "auto";
     }   else {
-        imgStory.style.width = "539px";
+        imgStory.style.width = "100%";
         imgStory.style.height = "auto";
     }
     if (widthArtist > heightArtist) {
-        imgArtist.style.height = "385px";
+        imgArtist.style.height = "100%";
     }   else {
-        imgArtist.style.width = "385px";
+        imgArtist.style.width = "100%";
     }
 
 }
