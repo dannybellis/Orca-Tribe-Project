@@ -43,9 +43,16 @@
 }
 
 #tribe-events .tribe-events-button{
-	color: black;
+	background-color: black;
+	color: white;
 }
 
+#tribe-events .tribe-events-button:hover{
+	background-color: white;
+	color: black;
+	border-color: black;
+	border-radius: none;
+}
 /*---------WIDGET STYLE---------*/
 .top-left-widget {
 	width: inherit;
