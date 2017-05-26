@@ -41,6 +41,7 @@
 
 .widget-title-home h3 {
 	padding: 0px;
+	font-size: 20px;
 }
 
 .widget-wrapper {
@@ -60,6 +61,16 @@
 
 .widget_wpcom_social_media_icons_widget a {
 	color: black;
+}
+
+#subscribe-field-blog_subscription-2 {
+	box-shadow: none;
+	border-color: rgb(255, 255, 255);
+	border-bottom-color: rgb(0, 0, 0);
+}
+
+#subscribe-submit {
+	display: none;
 }
 
 /*--------FEATURED AREA--------*/
