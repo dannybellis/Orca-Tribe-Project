@@ -34,6 +34,18 @@
 	color: gray;
 }
 
+#tribe-events-content a {
+	color: rgb(0, 0, 0);
+}
+
+#tribe-events-content .tribe-events-tooltip h4{
+	color: black;
+}
+
+#tribe-events .tribe-events-button{
+	color: black;
+}
+
 /*---------WIDGET STYLE---------*/
 .top-left-widget {
 	width: inherit;
